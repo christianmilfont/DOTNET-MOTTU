@@ -1,5 +1,8 @@
 # Projeto da matéria de DOTNET – MOTTU
 
+### Nome dos integrantes:
+- Christian Milfont rm555345
+- Iago Victor rm558450
 
 
 ## Esse projeto mescla a entrega do CP4 juntamente a entrega da Sprint 3
