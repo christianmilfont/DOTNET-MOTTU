@@ -15,7 +15,6 @@
 _________________________________________________________________________________
 
 
-
 Diagrama da Aplicação:
 
 
@@ -154,6 +153,7 @@ Regras de integridade e relacionamentos definidas pelo EF Core via migrations.
 ️ 
 
 ## Swagger:
+- Crie primeiro o Pátio, logo após poderá com o ID do pátio criar uma moto e assim por diante, poderá ter a liberdade de verificar status e posição da moto!
 
 - Mottu-DOTNET
 
