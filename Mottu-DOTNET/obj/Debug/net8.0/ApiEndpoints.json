@@ -1,0 +1,163 @@
+[
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
+    "Method": "ObterPorPlaca",
+    "RelativePath": "api/Moto/{placa}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Mottu_DOTNET.src.Application.DTOs.MotoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
+    "Method": "AlterarStatus",
+    "RelativePath": "api/Moto/{placa}/status",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "novoStatus",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Mottu_DOTNET.src.Application.DTOs.MotoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",
+    "Method": "CriarPatio",
+    "RelativePath": "api/Patio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Mottu_DOTNET.src.Application.DTOs.PatioDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",
+    "Method": "ObterPatio",
+    "RelativePath": "api/Patio/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Mottu_DOTNET.src.Application.DTOs.PatioDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",
+    "Method": "AdicionarMoto",
+    "RelativePath": "api/Patio/{patioId}/motos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patioId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "motoDto",
+        "Type": "Mottu_DOTNET.src.Application.DTOs.MotoDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Mottu_DOTNET.src.Application.DTOs.MotoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",
+    "Method": "RemoverMoto",
+    "RelativePath": "api/Patio/{patioId}/motos/{placa}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patioId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
