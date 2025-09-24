@@ -1,5 +1,96 @@
 [
   {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.ClienteController",
+    "Method": "GetClientes",
+    "RelativePath": "api/Cliente",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.ClienteController",
+    "Method": "CriarCliente",
+    "RelativePath": "api/Cliente",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clienteDto",
+        "Type": "Mottu_DOTNET.src.Application.DTOs.ClienteDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.ClienteController",
+    "Method": "GetClienteById",
+    "RelativePath": "api/Cliente/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "GetClienteById"
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.ClienteController",
+    "Method": "AtualizarCliente",
+    "RelativePath": "api/Cliente/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "clienteDto",
+        "Type": "Mottu_DOTNET.src.Application.DTOs.ClienteDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.ClienteController",
+    "Method": "DeletarCliente",
+    "RelativePath": "api/Cliente/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
     "Method": "ObterPorPlaca",
     "RelativePath": "api/Moto/{placa}",
@@ -27,9 +118,35 @@
   },
   {
     "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
-    "Method": "AlterarStatus",
-    "RelativePath": "api/Moto/{placa}/status",
-    "HttpMethod": "PATCH",
+    "Method": "AdicionarMoto",
+    "RelativePath": "api/Moto/adicionar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Mottu_DOTNET.src.API.Controllers.MotoController\u002BAdicionarMotoRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Mottu_DOTNET.src.Application.DTOs.MotoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
+    "Method": "AtualizarMoto",
+    "RelativePath": "api/Moto/atualizar/{placa}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -39,14 +156,86 @@
         "IsRequired": true
       },
       {
-        "Name": "novoStatus",
-        "Type": "System.String",
+        "Name": "request",
+        "Type": "Mottu_DOTNET.src.API.Controllers.MotoController\u002BAtualizarMotoRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
         "Type": "Mottu_DOTNET.src.Application.DTOs.MotoDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
+    "Method": "ListarMotosPaginadas",
+    "RelativePath": "api/Moto/listar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Mottu_DOTNET.src.Application.DTOs.MotoDto, Mottu-DOTNET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
+    "Method": "RemoverMoto",
+    "RelativePath": "api/Moto/remover/{patioId}/{placa}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patioId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "placa",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
+    "Method": "ObterTotalMotos",
+    "RelativePath": "api/Moto/total",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Int32",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -84,6 +273,37 @@
   },
   {
     "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",
+    "Method": "ObterPaginado",
+    "RelativePath": "api/Patio",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Mottu_DOTNET.src.Application.DTOs.PatioDto, Mottu-DOTNET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",
     "Method": "ObterPatio",
     "RelativePath": "api/Patio/{id}",
     "HttpMethod": "GET",
@@ -107,6 +327,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",
+    "Method": "RemoverPatio",
+    "RelativePath": "api/Patio/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Mottu_DOTNET.src.API.Controllers.PatioController",

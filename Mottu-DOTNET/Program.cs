@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 // Repositórios e Service
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 builder.Services.AddScoped<IPatioRepository, PatioRepository>();
 builder.Services.AddScoped<PatioService>();
