@@ -205,5 +205,12 @@ GO
     "DefaultConnection": "Server=DESKTOP-L9QAGFT\\SQLEXPRESS;Database=MottuDb;Trusted_Connection=True;TrustServerCertificate=True;"
   }
 }
+
+C:\Users\labsfiap>sqllocaldb i
+MSSQLLocalDB
+
+C:\Users\labsfiap>sqlcmd -S (localdb)\MSSQLLocalDB -E
+1> CREATE DATABASE MottuDb;
+2> GO
 ```
 <img width="805" height="494" alt="image" src="https://github.com/user-attachments/assets/7d8f12c5-a6b5-476e-9398-5202590cf0bd" />
