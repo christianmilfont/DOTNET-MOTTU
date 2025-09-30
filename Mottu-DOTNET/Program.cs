@@ -21,6 +21,14 @@ builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 builder.Services.AddScoped<IPatioRepository, PatioRepository>();
 builder.Services.AddScoped<PatioService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost", builder =>
+        builder.WithOrigins("http://localhost:8081")  // Ou a URL do seu front-end
+               .AllowAnyHeader()
+               .AllowAnyMethod());
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,6 +37,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// Use CORS antes do Authorization
+app.UseCors("AllowLocalhost");
 
 app.UseHttpsRedirection();
 
