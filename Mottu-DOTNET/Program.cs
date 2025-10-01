@@ -25,7 +25,7 @@ builder.Services.AddScoped<PatioService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost", builder =>
-        builder.WithOrigins("http://localhost:8081")  // Ou a URL do seu front-end
+        builder.WithOrigins("http://10.3.63.34:19000", "http://10.3.63.34:19001")  // Ou a URL do seu front-end
                .AllowAnyHeader()
                .AllowAnyMethod());
 });
