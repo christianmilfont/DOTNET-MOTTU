@@ -15,7 +15,7 @@
 
 ### Para rodar a aplicação:
 ```
-git clone:
+git clone https://github.com/christianmilfont/DOTNET-MOTTU.git
 
 cd DOTNET-MOTTU
 
