@@ -84,6 +84,10 @@ dotnet ef database update
 sqllocaldb info "MSSQLLocalDB"
 (localdb)\MSSQLLocalDB
 ```
+- Se necessário, crie o banco de dados tambem!:
+```
+CREATE DATABASE mottu_challenge;
+```
 
 ## Explicação detalhada da aplicação:
 
