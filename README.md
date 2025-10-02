@@ -13,14 +13,22 @@
 - Criar uma API escalável, legível e bem estruturada, refletindo práticas profissionais do mercado.
 
 
+### Para rodar a aplicação:
+```
+git clone:
 
+cd DOTNET-MOTTU
+
+dotnet run
+```
+
+### Veja mais para baixo como rodar o banco de dados utilizado para essa aplicação .NET
 _________________________________________________________________________________
 
 
 Diagrama da Aplicação:
 
-
-<img width="586" height="652" alt="image" src="https://github.com/user-attachments/assets/564bfd92-d45d-462d-aaa5-1fd376fefcf8" />
+<img width="609" height="645" alt="image" src="https://github.com/user-attachments/assets/5fafb904-3ff7-468f-9a97-df9ab91a2a02" />
 
 
 
@@ -58,13 +66,24 @@ dotnet add src/Infrastructure package Microsoft.EntityFrameworkCore.Tools
 
 - Infrastructure – EF Core + Repositórios + Migrations:
 ```
-dotnet ef migrations add Inicial
 dotnet ef database update
 ```
 <img width="289" height="56" alt="image" src="https://github.com/user-attachments/assets/8f5e9424-8e8b-42c6-a481-59d90cd78d8c" />
 
+## Banco de dados (SQL Server Express)
+- Para rodar o banco de dados, é necessário:
+```
+  sqllocaldb stop "MSSQLLocalDB"
+  sqllocaldb delete "MSSQLLocalDB"
+  sqllocaldb create "MSSQLLocalDB"
+  sqllocaldb start "MSSQLLocalDB"
 
-
+```
+- Verificar se o banco está acessível:
+```
+sqllocaldb info "MSSQLLocalDB"
+(localdb)\MSSQLLocalDB
+```
 
 ## Explicação detalhada da aplicação:
 
