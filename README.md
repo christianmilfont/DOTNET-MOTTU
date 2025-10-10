@@ -125,6 +125,8 @@ Se conecta aos repositórios da camada Infrastructure para persistência.
 - Contém as entidades de negócio:
 
 - Patio: agregado raiz que possui uma coleção de Moto.
+  
+- Cliente: feito especialmente para os motoristas serem anexados as motos (LOGIN e FORM para o mobile)
 
 - Moto: possui Placa, Status e Posicao.
 
@@ -155,6 +157,8 @@ Tabelas:
 Patios: armazena dados do pátio.
 
 Motos: armazena motos vinculadas a pátios.
+
+Cliente: pode ou não ter uma moto anexada a ele.
 
 Regras de integridade e relacionamentos definidas pelo EF Core via migrations.
 ```
