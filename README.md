@@ -209,7 +209,7 @@ DELETE /api/Patio/{patioId}/motos/{placa}
 ```
 
 
-## Para funcionar a minha conexão com o banco de dados eu tive de criar no meu dispositivo utilizando o SQLCMD no Prompt de Comando
+## Para funcionar a minha conexão com o banco de dados eu tive de criar no meu dispositivo utilizando o SQLCMD no Prompt de Comando (antigo comentario) (lembrete)
 ```bash
 sqlcmd -S DESKTOP-L9QAGFT\SQLEXPRESS -E
 ```
