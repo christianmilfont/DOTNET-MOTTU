@@ -226,6 +226,22 @@ Instale o pacote:
 ```
 dotnet add package Microsoft.AspNetCore.Mvc.Versioning
 ```
+O controller que foi adicionado o versionamento foi exatamente os EndPoints do MotoController
+
+**Para testar**:
+```
+POST /api/v1/moto/adicionar
+
+GET /api/v1/moto/ABC1234
+
+PUT /api/v1/moto/atualizar/ABC1234
+
+DELETE /api/v1/moto/remover/{patioId}/ABC1234
+
+GET /api/v1/moto/listar
+
+GET /api/v1/moto/total
+```
 
 ---
 
