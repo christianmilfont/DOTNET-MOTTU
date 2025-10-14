@@ -56,6 +56,7 @@ dotnet add src/Infrastructure package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add src/Infrastructure package Microsoft.EntityFrameworkCore.Design
 dotnet add src/Infrastructure package Microsoft.EntityFrameworkCore.Tools
 dotnet add package AspNetCore.HealthChecks.UI
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package Microsoft.ML
 
