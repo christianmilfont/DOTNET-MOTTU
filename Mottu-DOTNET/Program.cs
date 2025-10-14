@@ -38,7 +38,15 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod());
 });
 
+// --------------------
+// Implementando o Health Check
+// --------------------
+
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
+
+
 
 // --------------------
 // Swagger (sempre ativo, em qualquer ambiente)
@@ -55,6 +63,10 @@ app.MapGet("/", context =>
     context.Response.Redirect("/swagger/index.html");
     return Task.CompletedTask;
 });
+
+// --------------------
+app.MapHealthChecks("/health");
+// --------------------
 
 // --------------------
 // Pipeline HTTP

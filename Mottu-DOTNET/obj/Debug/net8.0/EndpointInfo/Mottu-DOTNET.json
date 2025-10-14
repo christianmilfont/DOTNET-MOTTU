@@ -151,6 +151,37 @@
         }
       }
     },
+    "/api/Login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cliente"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cliente"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cliente"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Moto/adicionar": {
       "post": {
         "tags": [
@@ -712,6 +743,41 @@
         },
         "additionalProperties": false
       },
+      "Cliente": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "motos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Moto"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ClienteDto": {
         "type": "object",
         "properties": {
@@ -742,6 +808,37 @@
               "format": "uuid"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Moto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "placa": {
+            "$ref": "#/components/schemas/Placa"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "posicao": {
+            "$ref": "#/components/schemas/Posicao"
+          },
+          "clienteId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true,
+            "readOnly": true
+          },
+          "cliente": {
+            "$ref": "#/components/schemas/Cliente"
           }
         },
         "additionalProperties": false
@@ -793,6 +890,33 @@
           }
         },
         "additionalProperties": false
+      },
+      "Placa": {
+        "type": "object",
+        "properties": {
+          "numero": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Posicao": {
+        "type": "object",
+        "properties": {
+          "valor": {
+            "$ref": "#/components/schemas/TipoPosicao"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipoPosicao": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
       }
     }
   }

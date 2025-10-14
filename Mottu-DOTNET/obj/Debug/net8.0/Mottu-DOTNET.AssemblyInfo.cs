@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mottu-DOTNET")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1639e6a307f0b3032ecd916ec2603d5a82d4ea18")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32f512a074fd99ff2d951956b01f0f37fe699a5a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mottu-DOTNET")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mottu-DOTNET")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

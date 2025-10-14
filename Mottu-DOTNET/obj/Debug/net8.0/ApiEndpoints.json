@@ -91,6 +91,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Mottu_DOTNET.src.Api.Controllers.LoginController",
+    "Method": "Login",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Mottu_DOTNET.src.Domain.Entities.Cliente",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Mottu_DOTNET.src.API.Controllers.MotoController",
     "Method": "ObterPorPlaca",
     "RelativePath": "api/Moto/{placa}",
