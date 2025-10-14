@@ -55,6 +55,9 @@ SQL Server:
 dotnet add src/Infrastructure package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add src/Infrastructure package Microsoft.EntityFrameworkCore.Design
 dotnet add src/Infrastructure package Microsoft.EntityFrameworkCore.Tools
+dotnet add package AspNetCore.HealthChecks.UI
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+dotnet add package Microsoft.ML
 
 ```
 
@@ -181,8 +184,72 @@ Regras de integridade e relacionamentos definidas pelo EF Core via migrations.
 - Repositórios (MotoRepository e PatioRepository) usam AppDbContext para persistir dados no SQL Server.
 
 - Resultado é mapeado para MotoDto e retornado pelo controller para o cliente.
+---
+  
+## Endpoint de Health Check
 
-️ 
+### Como implementar:
+
+**Instale o pacote:**
+```
+dotnet add package AspNetCore.HealthChecks.UI
+```
+
+**Em Program.cs:**
+```
+builder.Services.AddHealthChecks();
+
+var app = builder.Build();
+
+app.MapHealthChecks("/health");
+
+app.Run();
+```
+
+Teste:
+Acesse no navegador ou via curl:
+```
+GET https://localhost:5001/health
+```
+
+---
+
+## Versionamento da API 
+### Objetivo:
+
+Permitir múltiplas versões da API coexistirem.
+
+**Como implementar:**
+
+Instale o pacote:
+```
+dotnet add package Microsoft.AspNetCore.Mvc.Versioning
+```
+
+---
+
+## JWT (mais completo e seguro)
+
+**Adicione o pacote:**
+```
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+```
+
+---
+
+
+## Usar ML.NET em um Endpoint (25 pts)
+### Objetivo:
+
+Criar um modelo de machine learning simples (ex: previsão de preço, classificação).
+
+**Instale ML.NET:**
+```
+dotnet add package Microsoft.ML
+```
+
+---
+
 
 ## Swagger:
 - Crie primeiro o Pátio, logo após poderá com o ID do pátio criar uma moto e assim por diante, poderá ter a liberdade de verificar status e posição da moto!
