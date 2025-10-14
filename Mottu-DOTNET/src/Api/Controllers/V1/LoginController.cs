@@ -1,4 +1,4 @@
-﻿namespace Mottu_DOTNET.src.Api.Controllers;
+﻿namespace Mottu_DOTNET.src.Api.Controllers.V1;
 using Microsoft.AspNetCore.Mvc;
 using Mottu_DOTNET.src.Domain.Entities;
 using Mottu_DOTNET.src.Infrastructure.Data;

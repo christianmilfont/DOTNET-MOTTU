@@ -2,10 +2,11 @@
 using Mottu_DOTNET.src.Application.DTOs;
 using Mottu_DOTNET.src.Application.Services;
 
-namespace Mottu_DOTNET.src.API.Controllers
+namespace Mottu_DOTNET.src.API.Controllers.V1
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class MotoController : ControllerBase
     {
         private readonly PatioService _patioService;
@@ -15,7 +16,7 @@ namespace Mottu_DOTNET.src.API.Controllers
             _patioService = patioService;
         }
 
-        // POST: api/moto/adicionar
+        // POST: api/v1/moto/adicionar
         [HttpPost("adicionar")]
         public async Task<ActionResult<MotoDto>> AdicionarMoto([FromBody] AdicionarMotoRequest request)
         {
@@ -30,7 +31,7 @@ namespace Mottu_DOTNET.src.API.Controllers
             }
         }
 
-        // GET: api/moto/{placa}
+        // GET: api/v1/moto/{placa}
         [HttpGet("{placa}")]
         public async Task<ActionResult<MotoDto>> ObterPorPlaca(string placa)
         {
@@ -39,7 +40,7 @@ namespace Mottu_DOTNET.src.API.Controllers
             return Ok(motoDto);
         }
 
-        // PUT: api/moto/atualizar/{placa}
+        // PUT: api/v1/moto/atualizar/{placa}
         [HttpPut("atualizar/{placa}")]
         public async Task<ActionResult<MotoDto>> AtualizarMoto(string placa, [FromBody] AtualizarMotoRequest request)
         {
@@ -48,7 +49,7 @@ namespace Mottu_DOTNET.src.API.Controllers
             return Ok(motoDto);
         }
 
-        // DELETE: api/moto/remover/{patioId}/{placa}
+        // DELETE: api/v1/moto/remover/{patioId}/{placa}
         [HttpDelete("remover/{patioId}/{placa}")]
         public async Task<ActionResult> RemoverMoto(Guid patioId, string placa)
         {
@@ -63,7 +64,7 @@ namespace Mottu_DOTNET.src.API.Controllers
             }
         }
 
-        // GET: api/moto/listar?pageNumber=1&pageSize=10
+        // GET: api/v1/moto/listar?pageNumber=1&pageSize=10
         [HttpGet("listar")]
         public async Task<ActionResult<List<MotoDto>>> ListarMotosPaginadas([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
@@ -71,7 +72,7 @@ namespace Mottu_DOTNET.src.API.Controllers
             return Ok(motos);
         }
 
-        // GET: api/moto/total
+        // GET: api/v1/moto/total
         [HttpGet("total")]
         public async Task<ActionResult<int>> ObterTotalMotos()
         {

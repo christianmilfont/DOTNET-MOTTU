@@ -553,3 +553,4 @@ C:\Users\labsfiap\Source\Repos\DOTNET-MOTTU\Mottu-DOTNET\obj\Debug\net8.0\refint
 C:\Users\labsfiap\Source\Repos\DOTNET-MOTTU\Mottu-DOTNET\obj\Debug\net8.0\Mottu-DOTNET.pdb
 C:\Users\labsfiap\Source\Repos\DOTNET-MOTTU\Mottu-DOTNET\obj\Debug\net8.0\Mottu-DOTNET.genruntimeconfig.cache
 C:\Users\labsfiap\Source\Repos\DOTNET-MOTTU\Mottu-DOTNET\obj\Debug\net8.0\ref\Mottu-DOTNET.dll
+C:\Users\labsfiap\Source\Repos\DOTNET-MOTTU\Mottu-DOTNET\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.dll
