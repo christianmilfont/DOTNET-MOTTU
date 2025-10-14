@@ -254,27 +254,78 @@ dotnet add package Microsoft.ML
 ## Swagger:
 - Crie primeiro o Pátio, logo após poderá com o ID do pátio criar uma moto e assim por diante, poderá ter a liberdade de verificar status e posição da moto!
 
-- Mottu-DOTNET
+## Mottu-DOTNET
+/swagger/v1/swagger.json
 
-Moto
+**Cliente**
+
+```
+GET
+/api/Cliente
+
+POST
+/api/Cliente
+
+GET
+/api/Cliente/{id}
+
+PUT
+/api/Cliente/{id}
+
+DELETE
+/api/Cliente/{id}
+```
+---
+
+**Login**
+```
+POST
+/api/Login
+```
+**Moto**
+
+```
+POST
+/api/Moto/adicionar
+
+GET
+/api/Moto/{placa}
+
+PUT
+/api/Moto/atualizar/{placa}
+
+DELETE
+/api/Moto/remover/{patioId}/{placa}
+
+GET
+/api/Moto/listar
+
+GET
+/api/Moto/total
 ```
 
-PATCH /api/Moto/{placa}/status 
+---
 
-GET /api/Moto/{placa} 
+**Patio**
 ```
-Patio
+POST
+/api/Patio
+
+GET
+/api/Patio
+
+GET
+/api/Patio/{id}
+
+DELETE
+/api/Patio/{id}
+
+POST
+/api/Patio/{patioId}/motos
+
+DELETE
+/api/Patio/{patioId}/motos/{placa}
 ```
-
-POST /api/Patio 
-
-GET /api/Patio/{id} 
-
-POST /api/Patio/{patioId}/motos 
-
-DELETE /api/Patio/{patioId}/motos/{placa}
-```
-
 
 ## Para funcionar a minha conexão com o banco de dados eu tive de criar no meu dispositivo utilizando o SQLCMD no Prompt de Comando (antigo comentario) (lembrete)
 ```bash
