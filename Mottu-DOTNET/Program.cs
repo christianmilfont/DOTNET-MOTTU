@@ -7,6 +7,7 @@ using Mottu_DOTNET.src.Application.Services;
 using Mottu_DOTNET.src.Application.Services.Auth;
 using Mottu_DOTNET.src.Infrastructure.Data;
 using Mottu_DOTNET.src.Infrastructure.Repositories;
+using Mottu_DOTNET.src.Domain.ML;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -71,6 +72,12 @@ builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 builder.Services.AddScoped<IPatioRepository, PatioRepository>();
 builder.Services.AddScoped<PatioService>();
 builder.Services.AddScoped<JwtService>();
+
+// --------------------
+// Injeção de dependências para ML.NET
+// --------------------
+builder.Services.AddSingleton<TextClassificationModel>(); // Serviço para ML.NET
+builder.Services.AddScoped<TrainingService>(); // Serviço para orquestrar o treinamento do modelo
 
 // --------------------
 // Configuração de CORS
