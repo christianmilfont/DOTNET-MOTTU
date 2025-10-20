@@ -337,9 +337,10 @@ src/Application/Services/TrainingService.cs: Serviço responsável por treinar o
 
 src/Domain/ML/TextClassificationModel.cs: Contém a lógica do modelo de classificação de texto e predição.
 
-src/Infrastructure/Controllers/HelpController.cs: Controlador da API que expõe os endpoints de treinamento e classificação.
+src/Api/Controllers/V2/HelpController.cs: Controlador da API que expõe os endpoints de treinamento e classificação.
 
-src/Domain/Models/InputData.cs: Modelo de dados que contém a estrutura das perguntas e respostas utilizadas no treinamento.
+src/Domain/ML/InputData.cs: Modelo de dados que contém a estrutura das perguntas e respostas utilizadas no treinamento.
+src/Domain/ML/PredictionResult: Modelo que associa os dados, como as perguntas e declarar uma resposta eficiente.
 ```
 ### Como Funciona
 1. Treinamento do Modelo
