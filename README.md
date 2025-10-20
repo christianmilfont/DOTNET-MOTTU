@@ -315,7 +315,69 @@ Criar um modelo de machine learning simples (ex: previsão de preço, classifica
 ```
 dotnet add package Microsoft.ML
 ```
+## Sistema de Classificação e Respostas com ML.NET
 
+Este projeto utiliza ML.NET para implementar um sistema de classificação de texto e fornecer respostas automatizadas a perguntas frequentes. A solução é baseada em uma aplicação ASP.NET Core 8.0 com funcionalidades de API RESTful para treinamento e predição de modelos de Machine Learning.
+
+
+### Funcionalidades
+
+- Treinamento do Modelo: Um modelo de Machine Learning é treinado com um conjunto de perguntas e respostas para que a aplicação possa fornecer respostas automatizadas.
+
+- Classificação e Resposta: Quando o usuário faz uma pergunta, o modelo classifica a pergunta em uma categoria e fornece a resposta correspondente.
+
+- API RESTful: A aplicação expõe endpoints para treinamento do modelo e para realizar classificações, podendo ser consumida por outros sistemas ou interfaces.
+
+### Tecnologias Utilizadas
+ML.NET: Biblioteca de Machine Learning utilizada para treinar o modelo de classificação de texto.
+
+## Principais Componentes
+```
+src/Application/Services/TrainingService.cs: Serviço responsável por treinar o modelo de Machine Learning.
+
+src/Domain/ML/TextClassificationModel.cs: Contém a lógica do modelo de classificação de texto e predição.
+
+src/Infrastructure/Controllers/HelpController.cs: Controlador da API que expõe os endpoints de treinamento e classificação.
+
+src/Domain/Models/InputData.cs: Modelo de dados que contém a estrutura das perguntas e respostas utilizadas no treinamento.
+```
+### Como Funciona
+1. Treinamento do Modelo
+
+O modelo de ML.NET é treinado com um conjunto de perguntas e respostas. A cada entrada, a pergunta (texto) e sua resposta associada são usadas para ensinar o modelo a identificar a categoria da pergunta e retornar a resposta correta.
+
+Exemplo de entrada de dados para treinamento:
+```
+{
+  "Text": "Como faço para entrar em contato com o atendimento?",
+  "Resposta": "Você pode entrar em contato com nosso atendimento através do telefone (11) 1234-5678 ou pelo email atendimento@mottu.com."
+}
+```
+2. Previsão e Classificação
+
+Quando um usuário envia uma pergunta, a aplicação utiliza o modelo treinado para classificar a pergunta e retornar a resposta associada. O processo de predição é feito por meio do seguinte endpoint:
+
+POST /api/help/classify: Recebe uma pergunta como input e retorna a categoria e a resposta associada.
+
+Exemplo de requisição:
+```
+{
+  "Text": "Meu motor está fazendo barulho estranho!"
+}
+```
+
+Resposta esperada:
+```
+{
+  "PredictedCategory": "Reparo de Moto",
+  "PredictedResponse": "Se o motor da sua moto está fazendo barulho estranho, pode ser um problema com a vela de ignição ou até com o sistema de exaustão. É recomendado realizar uma verificação detalhada."
+}
+```
+3. Treinamento do Modelo via API
+
+O treinamento do modelo pode ser acionado via um endpoint específico:
+
+POST /api/help/train: Inicia o processo de treinamento com um conjunto de perguntas e respostas pré-definidas.
 ---
 
 
