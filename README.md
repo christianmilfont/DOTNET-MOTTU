@@ -245,12 +245,63 @@ GET /api/v1/moto/total
 
 ---
 
-## JWT (mais completo e seguro)
+# JWT (mais completo e seguro)
 
 **Adicione o pacote:**
 ```
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 ```
+## Autenticação com JWT
+
+Implementação da geração de tokens JWT em uma classe de serviço (JwtService), que cria tokens assinados com uma chave secreta segura.
+
+- Configuração do middleware de autenticação JWT no Program.cs, definindo parâmetros como emissor (Issuer), audiência (Audience), e validação do token.
+
+- Assegura que apenas usuários autenticados possam acessar endpoints protegidos.
+
+- Exemplo de uso do token para autenticar o usuário e retornar informações básicas junto com o token no login.
+
+### Configuração do Swagger para documentação e testes
+
+Configuração do Swagger UI para exibir a documentação da API, incluindo suporte para autenticação JWT.
+
+- Permite que usuários insiram o token JWT no Swagger UI usando o botão Authorize, facilitando testes dos endpoints protegidos.
+
+- Mantém a documentação atualizada automaticamente conforme o código evolui.
+
+## Outras configurações importantes
+
+Arquivos e códigos principais
+
+- appsettings.json: Contém configurações sensíveis, como a connection string do banco e as chaves do JWT.
+
+- Program.cs: Configuração geral da aplicação — serviços, middlewares, autenticação, Swagger, CORS, etc.
+
+- JwtService.cs: Serviço responsável por gerar tokens JWT válidos, assinados e com dados do usuário.
+
+- Controllers: Endpoints da API, como o LoginController que retorna o token após autenticação. ( [Authorize] )
+
+## Como usar
+
+- Configure a connection string no appsettings.json para apontar para seu banco SQL Server.
+
+- Ajuste a chave secreta (Jwt:Key) para uma string forte e segura (mínimo 256 bits).
+
+- Execute as migrations do EF Core para criar o banco, caso necessário.
+
+- Rode a aplicação (dotnet run).
+
+- Acesse o Swagger UI em http://localhost:5093/swagger/index.html
+
+- Use o endpoint de login para gerar seu token JWT. (Lembre-se que para adequação ao sistema o ideal é criar um Cliente antes, e depois logar)
+
+- No Swagger, clique em Authorize e insira o token no formato:
+  
+```
+Bearer xxxxxx
+```
+
+Teste os endpoints protegidos com o token autenticado.
 
 ---
 
