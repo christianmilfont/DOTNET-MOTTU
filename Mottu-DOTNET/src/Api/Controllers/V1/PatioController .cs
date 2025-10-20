@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Mottu_DOTNET.src.Application.DTOs;
 using Mottu_DOTNET.src.Application.Services;
 
@@ -16,6 +17,7 @@ namespace Mottu_DOTNET.src.API.Controllers
         }
 
         [HttpPost]
+        [Authorize] //adicionando uma camada de proteção com JWT 
         public async Task<ActionResult<PatioDto>> CriarPatio([FromBody] string nome)
         {
             var patio = await _patioService.CriarPatioAsync(nome);
