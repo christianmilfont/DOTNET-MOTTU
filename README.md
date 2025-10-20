@@ -6,7 +6,7 @@
 - Iago Victor rm558450
 
 
-## Esse projeto mescla a entrega do CP4 juntamente a entrega da Sprint 3
+## Esse projeto mescla a entrega do CP4/CP5 juntamente a entrega da Sprint 3 e 4
 
 - Aplicar os fundamentos de Clean Code, Domain-Driven Design (DDD) e Clean Architecture.
 
