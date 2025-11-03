@@ -1,11 +1,14 @@
-﻿namespace Mottu_DOTNET.src.Domain.ML
+﻿using Microsoft.ML.Data;
+
+namespace Mottu_DOTNET.src.Domain.ML
 {
     public class InputData
     {
-        public string Text { get; set; }  // A pergunta
-        public string Resposta { get; set; }  // Resposta associada à pergunta
+        [LoadColumn(0)]
+        public string Text { get; set; } = null!;  // Pergunta
+
+        [LoadColumn(1)]
+        [ColumnName("Label")] // ML.NET vai tratar "Resposta" como "Label"
+        public string Resposta { get; set; } = null!; // Resposta associada
     }
-
-
-
 }

@@ -33,7 +33,6 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "DEVOPS5 API", Version = "v1" });
 
-    // Definindo esquema de segurança para JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Insira o token JWT com o prefixo 'Bearer ' (exemplo: 'Bearer abcde12345')",
@@ -59,10 +58,18 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // --------------------
-// Banco de dados
+// Banco de dados (condicional para testes)
 // --------------------
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+if (builder.Environment.IsEnvironment("Testing"))
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseInMemoryDatabase("TestDb"));
+}
+else
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
 
 // --------------------
 // Injeção de dependências (Repositories e Services)
@@ -76,8 +83,8 @@ builder.Services.AddScoped<JwtService>();
 // --------------------
 // Injeção de dependências para ML.NET
 // --------------------
-builder.Services.AddSingleton<TextClassificationModel>(); // Serviço para ML.NET
-builder.Services.AddScoped<TrainingService>(); // Serviço para orquestrar o treinamento do modelo
+builder.Services.AddSingleton<TextClassificationModel>();
+builder.Services.AddScoped<TrainingService>();
 
 // --------------------
 // Configuração de CORS
@@ -132,9 +139,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowLocalhost");
 
-// Middleware de autenticação deve vir antes da autorização
 app.UseAuthentication();
-
 app.UseAuthorization();
 
 app.MapControllers();
@@ -154,3 +159,11 @@ app.MapGet("/", context =>
 app.MapHealthChecks("/health");
 
 app.Run();
+
+// --------------------
+// Permite testes de integração
+// --------------------
+namespace Mottu_DOTNET
+{
+    public partial class Program { }
+}

@@ -16,28 +16,31 @@ namespace Mottu_DOTNET.src.Domain.ML
         }
 
         // Treina o modelo com perguntas e respostas
-        public void TrainModel(IEnumerable<InputData> trainingData)
-        {
-            var trainData = _mlContext.Data.LoadFromEnumerable(trainingData);
+       public void TrainModel(IEnumerable<InputData> trainingData)
+{
+    var trainData = _mlContext.Data.LoadFromEnumerable(trainingData);
 
-            var pipeline = _mlContext.Transforms.Conversion.MapValueToKey("Label")
-                .Append(_mlContext.Transforms.Text.FeaturizeText("Features", "Text"))
-                .Append(_mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy())
-                .Append(_mlContext.Transforms.Conversion.MapKeyToValue("PredictedCategory", "PredictedLabel"));
+    var pipeline = _mlContext.Transforms.Conversion.MapValueToKey("Label") // agora mapeia a Resposta
+        .Append(_mlContext.Transforms.Text.FeaturizeText("Features", "Text"))
+        .Append(_mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy("Label", "Features"))
+        .Append(_mlContext.Transforms.Conversion.MapKeyToValue("PredictedCategory", "PredictedLabel"));
 
-            _model = pipeline.Fit(trainData);
-        }
-
+    _model = pipeline.Fit(trainData);
+}
         // Faz a previsão e retorna a resposta associada
-        public PredictionResult Predict(string inputText)
-        {
-            var predictionEngine = _mlContext.Model.CreatePredictionEngine<InputData, PredictionResult>(_model);
-            var input = new InputData { Text = inputText };
-            var prediction = predictionEngine.Predict(input);
+       public PredictionResult Predict(string inputText)
+{
+    var predictionEngine = _mlContext.Model.CreatePredictionEngine<InputData, PredictionResult>(_model);
+    var input = new InputData { Text = inputText };
+    var prediction = predictionEngine.Predict(input);
 
-            // Aqui associamos a resposta baseada na previsão (com base na categoria)
-            return prediction;
-        }
+    // O PredictedCategory agora é o texto da resposta prevista
+    return new PredictionResult
+    {
+        PredictedCategory = prediction.PredictedCategory,
+        PredictedResponse = prediction.PredictedCategory // como estamos treinando Label = Resposta
+    };
+}
     }
 
    
