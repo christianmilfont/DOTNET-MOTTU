@@ -66,27 +66,26 @@ dotnet add package Microsoft.ML
 - **Coverlet**: coleta de cobertura de testes.
 ```
 
+---
 
 
-
-# Mottu_DOTNET.Tests
+### Mottu_DOTNET.Tests
 
 Este projeto contém os **testes unitários e de integração** do projeto **Mottu_DOTNET**, permitindo validar a lógica de negócio e o comportamento dos endpoints da API.
 
 ---
 
 ## Estrutura do projeto
-
-Mottu_DOTNET.Tests/
-├── Unit/
-│ └── CalculatorServiceTests.cs # Testes unitários de serviços e lógica de negócio
-├── Integration/
-│ └── TrainingServiceIntegrationTests.cs # Testes de integração para o meu servico o qual contém a lógica de treinamento do nosso Machine Learning 
-├── CustomWebApplicationFactory.cs # Configuração para rodar a API com banco InMemory nos testes
-├── Mottu_DOTNET.Tests.csproj # Projeto de testes (referência ao projeto principal e pacotes)
-└── README.md # Este arquivo
-
-
+```
+  Mottu_DOTNET.Tests/
+  ├── Unit/
+  │ └── CalculatorServiceTests.cs # Testes unitários de serviços e lógica de negócio
+  ├── Integration/
+  │ └── TrainingServiceIntegrationTests.cs # Testes de integração para o meu servico o qual contém a lógica de treinamento do nosso Machine Learning 
+  ├── CustomWebApplicationFactory.cs # Configuração para rodar a API com banco InMemory nos testes
+  ├── Mottu_DOTNET.Tests.csproj # Projeto de testes (referência ao projeto principal e pacotes)
+  └── README.md # Este arquivo
+```
 ---
 
 ## Para que serve cada arquivo
@@ -104,23 +103,23 @@ Mottu_DOTNET.Tests/
 
 1. Restaurar pacotes:
 ```bash
-dotnet restore
+  dotnet restore
 ```
 Rodar todos os testes:
 ```
-cd Mottu_DOTNET.Tests
-dotnet test
+  cd Mottu_DOTNET.Tests
+  dotnet test
 ```
 Filtrar testes por categoria (opcional):
 
 # Testes unitários
 ```
-dotnet test --filter "Category=Unit"
+  dotnet test --filter "Category=Unit"
 ```
 # Testes de integração
 ```
-dotnet test --filter "Category=Integration"
-Observação: Use [Trait("Category", "Unit")] ou [Trait("Category", "Integration")] nos testes para habilitar filtragem por categoria.
+  dotnet test --filter "Category=Integration"
+  Observação: Use [Trait("Category", "Unit")] ou [Trait("Category", "Integration")] nos testes para habilitar filtragem por categoria.
 ```
 
 Objetivo do projeto de testes
@@ -138,7 +137,7 @@ Os endpoints da API retornam os resultados esperados e se comportam corretamente
 
 - Infrastructure – EF Core + Repositórios + Migrations:
 ```
-dotnet ef database update
+  dotnet ef database update
 ```
 <img width="289" height="56" alt="image" src="https://github.com/user-attachments/assets/8f5e9424-8e8b-42c6-a481-59d90cd78d8c" />
 
@@ -153,12 +152,12 @@ dotnet ef database update
 ```
 - Verificar se o banco está acessível:
 ```
-sqllocaldb info "MSSQLLocalDB"
-(localdb)\MSSQLLocalDB
+  sqllocaldb info "MSSQLLocalDB"
+  (localdb)\MSSQLLocalDB
 ```
 - Se necessário, crie o banco de dados tambem!:
 ```
-CREATE DATABASE mottu_challenge;
+  CREATE DATABASE mottu_challenge;
 ```
 
 ## Explicação detalhada da aplicação:
@@ -181,13 +180,13 @@ CREATE DATABASE mottu_challenge;
 
 - Valida regras como:
 ```
-Verificar se o pátio existe.
-
-Garantir que a posição é válida (enum Posicao.TipoPosicao).
-
-Orquestrar a criação, atualização, remoção e consulta de motos e pátios.
-
-Se conecta aos repositórios da camada Infrastructure para persistência.
+  Verificar se o pátio existe.
+  
+  Garantir que a posição é válida (enum Posicao.TipoPosicao).
+  
+  Orquestrar a criação, atualização, remoção e consulta de motos e pátios.
+  
+  Se conecta aos repositórios da camada Infrastructure para persistência.
 ```
 ### Camada Domain
 
@@ -221,15 +220,15 @@ Se conecta aos repositórios da camada Infrastructure para persistência.
 
 - Banco de dados (SQL Server)
 ```
-Tabelas:
-
-Patios: armazena dados do pátio.
-
-Motos: armazena motos vinculadas a pátios.
-
-Cliente: pode ou não ter uma moto anexada a ele.
-
-Regras de integridade e relacionamentos definidas pelo EF Core via migrations.
+  Tabelas:
+  
+  Patios: armazena dados do pátio.
+  
+  Motos: armazena motos vinculadas a pátios.
+  
+  Cliente: pode ou não ter uma moto anexada a ele.
+  
+  Regras de integridade e relacionamentos definidas pelo EF Core via migrations.
 ```
 
 
@@ -258,24 +257,24 @@ Regras de integridade e relacionamentos definidas pelo EF Core via migrations.
 
 **Instale o pacote:**
 ```
-dotnet add package AspNetCore.HealthChecks.UI
+  dotnet add package AspNetCore.HealthChecks.UI
 ```
 
 **Em Program.cs:**
 ```
-builder.Services.AddHealthChecks();
-
-var app = builder.Build();
-
-app.MapHealthChecks("/health");
-
-app.Run();
+  builder.Services.AddHealthChecks();
+  
+  var app = builder.Build();
+  
+  app.MapHealthChecks("/health");
+  
+  app.Run();
 ```
 
 Teste:
 Acesse no navegador ou via curl:
 ```
-GET https://localhost:5001/health
+  GET https://localhost:5001/health
 ```
 
 ---
@@ -289,23 +288,23 @@ Permitir múltiplas versões da API coexistirem.
 
 Instale o pacote:
 ```
-dotnet add package Microsoft.AspNetCore.Mvc.Versioning
+  dotnet add package Microsoft.AspNetCore.Mvc.Versioning
 ```
 O controller que foi adicionado o versionamento foi exatamente os EndPoints do MotoController
 
 **Para testar**:
 ```
-POST /api/v1/moto/adicionar
-
-GET /api/v1/moto/ABC1234
-
-PUT /api/v1/moto/atualizar/ABC1234
-
-DELETE /api/v1/moto/remover/{patioId}/ABC1234
-
-GET /api/v1/moto/listar
-
-GET /api/v1/moto/total
+  POST /api/v1/moto/adicionar
+  
+  GET /api/v1/moto/ABC1234
+  
+  PUT /api/v1/moto/atualizar/ABC1234
+  
+  DELETE /api/v1/moto/remover/{patioId}/ABC1234
+  
+  GET /api/v1/moto/listar
+  
+  GET /api/v1/moto/total
 ```
 
 ---
@@ -314,7 +313,7 @@ GET /api/v1/moto/total
 
 **Adicione o pacote:**
 ```
-dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+  dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 ```
 ## Autenticação com JWT
 
@@ -363,7 +362,7 @@ Arquivos e códigos principais
 - No Swagger, clique em Authorize e insira o token no formato:
   
 ```
-Bearer xxxxxx
+  Bearer xxxxxx
 ```
 
 Teste os endpoints protegidos com o token autenticado.
@@ -378,7 +377,7 @@ Criar um modelo de machine learning simples (ex: previsão de preço, classifica
 
 **Instale ML.NET:**
 ```
-dotnet add package Microsoft.ML
+  dotnet add package Microsoft.ML
 ```
 ## Sistema de Classificação e Respostas com ML.NET
 
@@ -398,14 +397,14 @@ ML.NET: Biblioteca de Machine Learning utilizada para treinar o modelo de classi
 
 ## Principais Componentes
 ```
-src/Application/Services/TrainingService.cs: Serviço responsável por treinar o modelo de Machine Learning.
-
-src/Domain/ML/TextClassificationModel.cs: Contém a lógica do modelo de classificação de texto e predição.
-
-src/Api/Controllers/V2/HelpController.cs: Controlador da API que expõe os endpoints de treinamento e classificação.
-
-src/Domain/ML/InputData.cs: Modelo de dados que contém a estrutura das perguntas e respostas utilizadas no treinamento.
-src/Domain/ML/PredictionResult: Modelo que associa os dados, como as perguntas e declarar uma resposta eficiente.
+  src/Application/Services/TrainingService.cs: Serviço responsável por treinar o modelo de Machine Learning.
+  
+  src/Domain/ML/TextClassificationModel.cs: Contém a lógica do modelo de classificação de texto e predição.
+  
+  src/Api/Controllers/V2/HelpController.cs: Controlador da API que expõe os endpoints de treinamento e classificação.
+  
+  src/Domain/ML/InputData.cs: Modelo de dados que contém a estrutura das perguntas e respostas utilizadas no treinamento.
+  src/Domain/ML/PredictionResult: Modelo que associa os dados, como as perguntas e declarar uma resposta eficiente.
 ```
 ### Como Funciona
 1. Treinamento do Modelo
@@ -414,10 +413,10 @@ O modelo de ML.NET é treinado com um conjunto de perguntas e respostas. A cada 
 
 Exemplo de entrada de dados para treinamento:
 ```
-{
-  "Text": "Como faço para entrar em contato com o atendimento?",
-  "Resposta": "Você pode entrar em contato com nosso atendimento através do telefone (11) 1234-5678 ou pelo email atendimento@mottu.com."
-}
+  {
+    "Text": "Como faço para entrar em contato com o atendimento?",
+    "Resposta": "Você pode entrar em contato com nosso atendimento através do telefone (11) 1234-5678 ou pelo email atendimento@mottu.com."
+  }
 ```
 2. Previsão e Classificação
 
@@ -427,17 +426,17 @@ POST /api/help/classify: Recebe uma pergunta como input e retorna a categoria e 
 
 Exemplo de requisição:
 ```
-{
-  "Text": "Meu motor está fazendo barulho estranho!"
-}
+  {
+    "Text": "Meu motor está fazendo barulho estranho!"
+  }
 ```
 
 Resposta esperada:
 ```
-{
-  "PredictedCategory": "Reparo de Moto",
-  "PredictedResponse": "Se o motor da sua moto está fazendo barulho estranho, pode ser um problema com a vela de ignição ou até com o sistema de exaustão. É recomendado realizar uma verificação detalhada."
-}
+  {
+    "PredictedCategory": "Reparo de Moto",
+    "PredictedResponse": "Se o motor da sua moto está fazendo barulho estranho, pode ser um problema com a vela de ignição ou até com o sistema de exaustão. É recomendado realizar uma verificação detalhada."
+  }
 ```
 3. Treinamento do Modelo via API
 
@@ -456,71 +455,71 @@ POST /api/help/train: Inicia o processo de treinamento com um conjunto de pergun
 **Cliente**
 
 ```
-GET
-/api/Cliente
-
-POST
-/api/Cliente
-
-GET
-/api/Cliente/{id}
-
-PUT
-/api/Cliente/{id}
-
-DELETE
-/api/Cliente/{id}
+  GET
+  /api/Cliente
+  
+  POST
+  /api/Cliente
+  
+  GET
+  /api/Cliente/{id}
+  
+  PUT
+  /api/Cliente/{id}
+  
+  DELETE
+  /api/Cliente/{id}
 ```
 ---
 
 **Login**
 ```
-POST
-/api/Login
+  POST
+  /api/Login
 ```
 **Moto**
 
 ```
-POST
-/api/Moto/adicionar
-
-GET
-/api/Moto/{placa}
-
-PUT
-/api/Moto/atualizar/{placa}
-
-DELETE
-/api/Moto/remover/{patioId}/{placa}
-
-GET
-/api/Moto/listar
-
-GET
-/api/Moto/total
+  POST
+  /api/Moto/adicionar
+  
+  GET
+  /api/Moto/{placa}
+  
+  PUT
+  /api/Moto/atualizar/{placa}
+  
+  DELETE
+  /api/Moto/remover/{patioId}/{placa}
+  
+  GET
+  /api/Moto/listar
+  
+  GET
+  /api/Moto/total
 ```
 
 ---
 
 **Patio**
 ```
-POST
-/api/Patio
-
-GET
-/api/Patio
-
-GET
-/api/Patio/{id}
-
-DELETE
-/api/Patio/{id}
-
-POST
-/api/Patio/{patioId}/motos
-
-DELETE
-/api/Patio/{patioId}/motos/{placa}
+  POST
+  /api/Patio
+  
+  GET
+  /api/Patio
+  
+  GET
+  /api/Patio/{id}
+  
+  DELETE
+  /api/Patio/{id}
+  
+  POST
+  /api/Patio/{patioId}/motos
+  
+  DELETE
+  /api/Patio/{patioId}/motos/{placa}
 ```
 
 ## Para funcionar a minha conexão com o banco de dados eu tive de criar no meu dispositivo utilizando o SQLCMD no Prompt de Comando (antigo comentario) (lembrete)
