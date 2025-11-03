@@ -60,14 +60,79 @@ dotnet add package Microsoft.AspNetCore.Mvc.Versioning
 dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 dotnet add package Microsoft.ML
 
+- **xUnit**: framework de testes unitários.
+- **Microsoft.AspNetCore.Mvc.Testing**: permite criar testes de integração simulando a API real.
+- **Microsoft.EntityFrameworkCore.InMemory**: banco de dados em memória para testes, evitando impactar o SQL Server real.
+- **Coverlet**: coleta de cobertura de testes.
 ```
 
 
 
 
+# Mottu_DOTNET.Tests
+
+Este projeto contém os **testes unitários e de integração** do projeto **Mottu_DOTNET**, permitindo validar a lógica de negócio e o comportamento dos endpoints da API.
+
+---
+
+## Estrutura do projeto
+
+Mottu_DOTNET.Tests/
+├── Unit/
+│ └── CalculatorServiceTests.cs # Testes unitários de serviços e lógica de negócio
+├── Integration/
+│ └── TrainingServiceIntegrationTests.cs # Testes de integração para o meu servico o qual contém a lógica de treinamento do nosso Machine Learning 
+├── CustomWebApplicationFactory.cs # Configuração para rodar a API com banco InMemory nos testes
+├── Mottu_DOTNET.Tests.csproj # Projeto de testes (referência ao projeto principal e pacotes)
+└── README.md # Este arquivo
 
 
+---
 
+## Para que serve cada arquivo
+
+- **Unit/CalculatorServiceTests.cs**: contém testes unitários da lógica de negócio (ex: serviços).  
+- **CustomWebApplicationFactory.cs**: substitui o banco SQL Server pelo **InMemory** durante os testes de integração, garantindo testes isolados e rápidos.  
+- **Mottu_DOTNET.Tests.csproj**: arquivo de projeto, inclui referências aos pacotes e ao projeto principal.  
+
+---
+
+## Executando os testes
+
+<img width="695" height="201" alt="image" src="https://github.com/user-attachments/assets/b1eb5345-0cc5-4712-852f-5f102786db51" />
+
+
+1. Restaurar pacotes:
+```bash
+dotnet restore
+```
+Rodar todos os testes:
+```
+cd Mottu_DOTNET.Tests
+dotnet test
+```
+Filtrar testes por categoria (opcional):
+
+# Testes unitários
+```
+dotnet test --filter "Category=Unit"
+```
+# Testes de integração
+```
+dotnet test --filter "Category=Integration"
+Observação: Use [Trait("Category", "Unit")] ou [Trait("Category", "Integration")] nos testes para habilitar filtragem por categoria.
+```
+
+Objetivo do projeto de testes
+Garantir que:
+
+A lógica de negócio funciona corretamente (unitários).
+
+Os endpoints da API retornam os resultados esperados e se comportam corretamente (integração).
+
+É possível executar testes isolados sem afetar o banco de dados de produção.
+
+---
 
 
 
