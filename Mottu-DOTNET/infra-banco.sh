@@ -12,7 +12,7 @@ MYSQL_PORT=3306
 
 # MySQL
 MYSQL_ROOT_PASSWORD="Senha123!"
-MYSQL_DATABASE="ProjetoAutorLivroDb"
+MYSQL_DATABASE="Mottu-DotNet"
 
 # Gera sufixo aleatório para nomes únicos
 SUFFIX=$(head /dev/urandom | tr -dc 'a-z0-9' | fold -w5 | head -n1)
