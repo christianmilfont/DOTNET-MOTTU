@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -9,7 +10,6 @@ using Mottu_DOTNET.src.Infrastructure.Data;
 using Mottu_DOTNET.src.Infrastructure.Repositories;
 using Mottu_DOTNET.src.Domain.ML;
 using System.Text;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // --------------------
@@ -68,7 +68,10 @@ if (builder.Environment.IsEnvironment("Testing"))
 else
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+        options.UseMySql(
+            builder.Configuration.GetConnectionString("DefaultConnection"),
+            ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+        ));
 }
 
 // --------------------
