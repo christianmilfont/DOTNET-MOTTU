@@ -1,7 +1,7 @@
 # Projeto da matéria de DOTNET – MOTTU
 ## Uma aplicação voltada a cadastrar clientes e motos, além disso alinhar as motos e clientes para os determinados pátios. Portando, criado para administrar e localizar as motos vindas pelos clientes (Front) e vindas por inadimplência (Back), junto a esse nosso projeto o IoT dando suporte com o uso do ESP-32 para ativar o alarme com seu próprio Dashboard! 
 
-#### Nome dos integrantes:
+#### Nome dos integrantes :
 - Christian Milfont rm555345
 - Iago Victor rm558450
 
